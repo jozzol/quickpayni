@@ -1,5 +1,27 @@
 const express = require("express");
+require('dotenv').config();
 const path = require('path');
+var mercadopago = require('mercadopago');
+
+
+mercadopago.configure({
+    access_token: process.env.MERCADOACCESSS
+});
+
+var preference = {
+  items: [
+    {
+      title: 'Test',
+      quantity: 1,
+      currency_id: 'ARS',
+      unit_price: 10.5
+    }
+  ]
+};
+
+mercadopago.preferences.create(preference)
+
+
 
 const PORT = process.env.PORT || 3001;
 
