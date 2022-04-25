@@ -1,31 +1,26 @@
 const express = require("express");
-require('dotenv').config();
+const dotenv = require("dotenv");
 const path = require('path');
 var mercadopago = require('mercadopago');
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
-
-mercadopago.configure({
-    access_token: process.env.MERCADOACCESSS
-});
-
-var preference = {
-  items: [
-    {
-      title: 'Test',
-      quantity: 1,
-      currency_id: 'ARS',
-      unit_price: 10.5
-    }
-  ]
-};
-
-mercadopago.preferences.create(preference)
-
-
+const indexRouter = require("./routes/index");
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
+
+dotenv.config();
+
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+app.use("/", indexRouter);
+
+module.exports = app;
 
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, './client/build')));
