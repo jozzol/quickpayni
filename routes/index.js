@@ -1,15 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-// const PaymentController = require("./controller")
+const PaymentController = require("../controller/PaymentController");
+const PaymentService = require("../services/PaymentService");
+const PaymentInstance = new PaymentController(new PaymentService());
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  return res.json({
+    "/payment": "generates a payment link"
+  })
 });
 
 router.get('/payment', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  PaymentInstance.getPaymentLink(req, res);
 });
 
 module.exports = router;
