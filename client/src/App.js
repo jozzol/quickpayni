@@ -16,7 +16,7 @@ function App() {
       <header className="App-header">
         <h1>quickpayni</h1>
         <p>{!data ? "Loading..." : data}</p>
-
+          
       </header>
     </div>
   );
