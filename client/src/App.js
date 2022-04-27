@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./App.css";
+import { MercadoForm } from "./components/MercadoForm";
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -16,7 +17,7 @@ function App() {
       <header className="App-header">
         <h1>quickpayni</h1>
         <p>{!data ? "Loading..." : data}</p>
-          
+        <MercadoForm></MercadoForm>
       </header>
     </div>
   );
