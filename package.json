@@ -18,7 +18,8 @@
     "express": "^4.17.3",
     "mercadopago": "^1.5.12",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "react-router-dom": "^6.3.0"
   },
   "engines": {
     "node": "17.4.0"

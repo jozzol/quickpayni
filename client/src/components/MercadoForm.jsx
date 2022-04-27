@@ -1,26 +1,36 @@
 import React, {useState} from 'react'
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 
 
-export function MercadoForm(props) {
+const MercadoForm = () => {
     const [total, setTotal] = useState("");
   
-    handleChange = (e) => {
-      this.setState({value: e.target.value});
+    const handleChange = (e) => {
+      setTotal(e.target.value);
+      console.log(total);
     }
   
-    handleSubmit = (e) => {
+    const handleSubmit = (e) => {
       e.preventDefault();
     }
   
       return (
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Total:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Total:
+              <input type="text" value={total} onChange={handleChange} />
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
       );
+
+    // return(
+    //   <div>
+    //         <h2>Hey react!</h2>
+    //     </div>
+    // )
   }
 
+  export default MercadoForm;
