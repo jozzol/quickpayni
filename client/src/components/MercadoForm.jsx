@@ -13,7 +13,6 @@ export function MercadoForm(props) {
       e.preventDefault();
     }
   
-    render() {
       return (
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -23,6 +22,5 @@ export function MercadoForm(props) {
           <input type="submit" value="Submit" />
         </form>
       );
-    }
   }
 
