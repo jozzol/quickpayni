@@ -2,7 +2,27 @@ const axios = require("axios");
 require('dotenv').config()
 
 class PaymentService {
-  async createPayment() {
+  async createPayment(req, res) {
+
+    // console.log('payment body 2')
+    // console.log(req.body)
+
+    const {payer_email, title, description, picture_url, category_id, quantity, unit_price, back_urls} = req.body
+    const items = [
+      {
+        title: title,
+        description: description,
+        picture_url: picture_url,
+        category_id: category_id,
+        quantity: quantity,
+        unit_price: Number(unit_price)
+      }
+    ]
+
+    const body2 = {payer_email, items, back_urls}
+
+    // console.log(body2)
+
     const url = "https://api.mercadopago.com/checkout/preferences";
 
     const body = {
@@ -23,8 +43,10 @@ class PaymentService {
         success: "/success"
       }
     };
+    // console.log('payment body test')
+    // console.log(body)
 
-    const payment = await axios.post(url, body, {
+    const payment = await axios.post(url, body2, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.MERCADOACCESSS}`

@@ -12,8 +12,11 @@ router.get('/', function(req, res, next) {
   })
 });
 
-router.post('/payment', function(req, res, next) {
-  PaymentInstance.getPaymentLink(req, res);
+router.post('/payment', async function(req, res, next) {
+  // const {items} = req.body
+  // console.log('paymentBody ' + items)
+  // console.log(items)
+  await PaymentInstance.getPaymentLink(req, res)
 });
 
 module.exports = router;

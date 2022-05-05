@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 
 import "./App.css";
 import MercadoForm from "./components/MercadoForm";
@@ -13,11 +14,13 @@ function App() {
   }, []);
 
   return (
+    <BrowserRouter>
     <div className="App">
         <h1>quickpayni</h1>
         <p>{!data ? "Loading..." : data}</p>
         <MercadoForm/>
     </div>
+    </BrowserRouter>
   );
 }
 
